@@ -1,8 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import moment from 'moment';
+import moment from 'moment'
 
-const Post = ({ title, content, user, createdAt, stars, comments }) => {
+const Post = ({
+  id,
+  title,
+  content,
+  user,
+  createdAt,
+  stars,
+  comments,
+  onRemove,
+}) => {
   return (
     <article className="Post">
       <div className="Post--content">
@@ -28,12 +37,14 @@ const Post = ({ title, content, user, createdAt, stars, comments }) => {
         </div>
         <div>
           <button className="star">Star</button>
-          <button className="delete">Delete</button>
+          <button className="delete" onClick={() => onRemove(id)}>
+            Delete
+          </button>
         </div>
       </div>
     </article>
-  );
-};
+  )
+}
 
 Post.defaultProps = {
   title: 'An Incredibly Hot Take',
@@ -48,6 +59,6 @@ Post.defaultProps = {
   createdAt: new Date(),
   stars: 0,
   comments: 0,
-};
+}
 
-export default Post;
+export default Post
